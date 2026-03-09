@@ -181,8 +181,24 @@ button { cursor: pointer; font-family: 'Noto Sans JP', sans-serif; }
 
 /* PC header nav */
 .header-nav { display: none; }
+.header-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
 .header-cta { flex-shrink: 0; }
 .header-cta .btn-sm { padding: 9px 18px; font-size: 12px; }
+
+/* TikTok icon button */
+.tiktok-icon-btn {
+  display: flex; align-items: center; gap: 5px;
+  background: #000; color: #fff;
+  border-radius: var(--r-full); padding: 6px 12px;
+  font-size: 12px; font-weight: 700;
+  transition: opacity .18s, transform .18s;
+  white-space: nowrap; flex-shrink: 0;
+  text-decoration: none;
+}
+.tiktok-icon-btn:hover { opacity: .82; transform: scale(1.04); }
+.tiktok-label { display: none; }
+
+@media (min-width: 480px) { .tiktok-label { display: inline; } }
 
 /* =====================================================
    HERO SECTION
@@ -617,8 +633,152 @@ select.form-ctrl {
 .mid-cta p { font-size: 14px; font-weight: 700; color: var(--primary-dark); margin-bottom: 14px; line-height: 1.6; }
 
 /* =====================================================
-   SCROLL FADE ANIMATION
+   TIKTOK SCENE SECTION
 ===================================================== */
+
+/* Horizontal scroll track */
+.scene-scroll-wrap {
+  overflow-x: auto;
+  overflow-y: visible;
+  -webkit-overflow-scrolling: touch;
+  padding: 24px 0 16px;
+  /* hide scrollbar but keep functional */
+  scrollbar-width: none;
+}
+.scene-scroll-wrap::-webkit-scrollbar { display: none; }
+
+.scene-track {
+  display: flex;
+  gap: 18px;
+  padding: 4px 18px 8px;
+  /* make it wider than viewport so it scrolls */
+  width: max-content;
+}
+
+/* Individual card */
+.scene-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+  width: 200px;
+}
+
+/* Phone frame wrapper */
+.scene-phone {
+  width: 200px;
+  border-radius: 24px;
+  background: #111;
+  padding: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.08);
+  position: relative;
+}
+.scene-phone-inner {
+  border-radius: 18px;
+  overflow: hidden;
+  background: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+}
+.scene-phone-bar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 10px 5px;
+  background: #111;
+}
+.scene-phone-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+}
+.scene-phone-dot:nth-child(1) { background: #ff5f57; }
+.scene-phone-dot:nth-child(2) { background: #febc2e; }
+.scene-phone-dot:nth-child(3) { background: #28c840; }
+
+.scene-embed-area {
+  width: 100%;
+  aspect-ratio: 9/16;
+  overflow: hidden;
+  position: relative;
+  background: #000;
+}
+.scene-embed-area iframe,
+.scene-embed-area > * { width: 100%; height: 100%; }
+
+/* TikTok embed override */
+.scene-embed-area .tiktok-embed {
+  margin: 0 !important;
+  max-width: 100% !important;
+  min-width: auto !important;
+  background: #000;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Placeholder variants */
+.scene-placeholder { position: relative; }
+.scene-placeholder-note {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: rgba(0,0,0,.55);
+  color: rgba(255,255,255,.7);
+  font-size: 9px;
+  text-align: center;
+  padding: 5px 4px;
+  backdrop-filter: blur(4px);
+}
+
+/* CTA card inner */
+.scene-cta-area {
+  background: linear-gradient(160deg, #000 0%, #1a1a1a 100%);
+  display: flex; align-items: center; justify-content: center;
+}
+.scene-cta-inner {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 20px 14px; text-align: center;
+}
+
+/* Phone caption strip */
+.scene-phone-caption {
+  background: rgba(0,0,0,.75);
+  padding: 7px 10px;
+  backdrop-filter: blur(6px);
+}
+.scene-caption-title { font-size: 11px; font-weight: 700; color: #fff; }
+.scene-caption-sub   { font-size: 9px; color: rgba(255,255,255,.65); margin-top: 1px; }
+
+/* Card text below phone */
+.scene-card-text { text-align: center; }
+.scene-card-label {
+  display: inline-block;
+  font-size: 11px; font-weight: 700;
+  background: rgba(255,255,255,.15); color: rgba(255,255,255,.9);
+  border-radius: var(--r-full); padding: 3px 11px;
+  margin-bottom: 6px;
+}
+.scene-card-desc {
+  font-size: 12px; color: rgba(255,255,255,.72);
+  line-height: 1.65;
+}
+
+/* Responsive: wider cards on larger screens */
+@media (min-width: 480px) {
+  .scene-track  { gap: 22px; padding: 4px 24px 8px; }
+  .scene-card   { width: 220px; }
+  .scene-phone  { width: 220px; }
+}
+@media (min-width: 768px) {
+  .scene-track  { gap: 28px; padding: 8px 32px 12px; }
+  .scene-card   { width: 240px; }
+  .scene-phone  { width: 240px; }
+}
+@media (min-width: 1024px) {
+  .scene-track  { gap: 32px; padding: 8px 40px 12px; }
+  .scene-card   { width: 260px; }
+  .scene-phone  { width: 260px; }
+}
 .fade { opacity: 0; transform: translateY(22px); transition: opacity .55s ease, transform .55s ease; }
 .fade.in { opacity: 1; transform: translateY(0); }
 
@@ -669,6 +829,8 @@ select.form-ctrl {
   }
   .header-nav a:hover { color: var(--primary); border-bottom-color: var(--primary); }
   .header-cta .btn-sm { padding: 10px 20px; font-size: 13px; }
+  .tiktok-icon-btn { padding: 7px 14px; font-size: 13px; }
+  .tiktok-label { display: inline; }
 
   /* === HERO === */
   #hero { padding-top: 72px; min-height: 100vh; }
@@ -958,11 +1120,18 @@ select.form-ctrl {
       <a href="#worry">お悩み</a>
       <a href="#reasons">選ばれる理由</a>
       <a href="#lessons">教育内容</a>
+      <a href="#scene">授業動画</a>
       <a href="#courses">コース</a>
       <a href="#comparison">比較</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <div class="header-cta">
+    <div class="header-right">
+      <a href="https://www.tiktok.com/@isk.kids.academy?lang=ja-JP" target="_blank" rel="noopener" class="tiktok-icon-btn" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="22" height="22">
+          <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.2 8.2 0 0 0 4.79 1.53V6.76a4.85 4.85 0 0 1-1.02-.07z"/>
+        </svg>
+        <span class="tiktok-label">TikTok</span>
+      </a>
       <button class="btn btn-primary btn-sm" onclick="toForm()">
         <i class="fas fa-paper-plane"></i>無料相談・資料請求
       </button>
@@ -1235,6 +1404,201 @@ select.form-ctrl {
       <div style="text-align:center;margin-top:28px;" class="btn-row">
         <button class="btn btn-primary" onclick="toForm()"><i class="fas fa-comment-dots"></i>レッスンについて相談する</button>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     S5.5: TIKTOK SCENE (授業風景動画)
+===================================================== -->
+<section class="sec-sm fade" id="scene" style="background:linear-gradient(160deg,#0a2a33 0%,#1C5C6B 100%); overflow:hidden;">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-label" style="background:rgba(255,255,255,.15);color:#fff;">📱 授業風景をのぞいてみる</span>
+      <h2 class="sec-title" style="color:#fff;">実際の<em style="color:var(--accent);">クラスの様子</em>を<br>動画でご確認ください</h2>
+      <div class="sec-bar"></div>
+      <p class="sec-sub" style="color:rgba(255,255,255,.75);">TikTokで日々の授業・子どもたちの笑顔を発信中。<br>見学前にぜひご覧ください。</p>
+    </div>
+  </div>
+
+  <!-- Scroll hint -->
+  <div style="text-align:right; max-width:960px; margin:10px auto 0; padding:0 18px;">
+    <span style="font-size:11px;color:rgba(255,255,255,.5);letter-spacing:.06em;">スクロールできます →</span>
+  </div>
+
+  <!-- Horizontal scroll container -->
+  <div class="scene-scroll-wrap">
+    <div class="scene-track">
+
+      <!-- Card 1 -->
+      <div class="scene-card">
+        <div class="scene-phone">
+          <div class="scene-phone-inner">
+            <div class="scene-phone-bar">
+              <span class="scene-phone-dot"></span>
+              <span class="scene-phone-dot"></span>
+              <span class="scene-phone-dot"></span>
+            </div>
+            <div class="scene-embed-area">
+              <blockquote class="tiktok-embed"
+                cite="https://www.tiktok.com/@isk.kids.academy"
+                data-unique-id="isk.kids.academy"
+                data-embed-type="creator"
+                style="max-width:100%;min-width:auto;">
+                <section>
+                  <a target="_blank" href="https://www.tiktok.com/@isk.kids.academy?lang=ja-JP">@isk.kids.academy</a>
+                </section>
+              </blockquote>
+            </div>
+            <div class="scene-phone-caption">
+              <div class="scene-caption-title">ISK Kids Academy</div>
+              <div class="scene-caption-sub">オールイングリッシュの日常</div>
+            </div>
+          </div>
+        </div>
+        <div class="scene-card-text">
+          <div class="scene-card-label">🌍 英語レッスン</div>
+          <p class="scene-card-desc">歌・ゲーム・絵本を通じて<br>楽しみながら英語に親しむ</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="scene-card">
+        <div class="scene-phone">
+          <div class="scene-phone-inner">
+            <div class="scene-phone-bar">
+              <span class="scene-phone-dot"></span>
+              <span class="scene-phone-dot"></span>
+              <span class="scene-phone-dot"></span>
+            </div>
+            <div class="scene-embed-area scene-placeholder v2">
+              <svg viewBox="0 0 200 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+                <rect width="200" height="320" fill="#FCE4EC"/>
+                <text x="100" y="130" font-size="52" text-anchor="middle">🎵</text>
+                <text x="100" y="185" fill="#C2185B" font-size="14" font-weight="bold" text-anchor="middle" font-family="Arial">ミュージック</text>
+                <text x="100" y="208" fill="#E91E63" font-size="11" text-anchor="middle" font-family="Arial">リズムで感性を育てる</text>
+              </svg>
+              <div class="scene-placeholder-note">実際の動画はTikTokで公開中</div>
+            </div>
+            <div class="scene-phone-caption">
+              <div class="scene-caption-title">ミュージックタイム</div>
+              <div class="scene-caption-sub">感性・リズム・表現力を育む</div>
+            </div>
+          </div>
+        </div>
+        <div class="scene-card-text">
+          <div class="scene-card-label">🎵 ミュージック</div>
+          <p class="scene-card-desc">音楽を通じてリズム感・<br>表現力・協調性を磨く</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="scene-card">
+        <div class="scene-phone">
+          <div class="scene-phone-inner">
+            <div class="scene-phone-bar">
+              <span class="scene-phone-dot"></span>
+              <span class="scene-phone-dot"></span>
+              <span class="scene-phone-dot"></span>
+            </div>
+            <div class="scene-embed-area scene-placeholder v3">
+              <svg viewBox="0 0 200 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+                <rect width="200" height="320" fill="#E8F5E9"/>
+                <text x="100" y="130" font-size="52" text-anchor="middle">🤸</text>
+                <text x="100" y="185" fill="#2E7D32" font-size="14" font-weight="bold" text-anchor="middle" font-family="Arial">エクササイズ</text>
+                <text x="100" y="208" fill="#388E3C" font-size="11" text-anchor="middle" font-family="Arial">体を動かして自信をつける</text>
+              </svg>
+              <div class="scene-placeholder-note">実際の動画はTikTokで公開中</div>
+            </div>
+            <div class="scene-phone-caption">
+              <div class="scene-caption-title">エクササイズ</div>
+              <div class="scene-caption-sub">体力・運動能力・自己肯定感</div>
+            </div>
+          </div>
+        </div>
+        <div class="scene-card-text">
+          <div class="scene-card-label">🤸 エクササイズ</div>
+          <p class="scene-card-desc">「できた！」体験が<br>自己肯定感を育てます</p>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="scene-card">
+        <div class="scene-phone">
+          <div class="scene-phone-inner">
+            <div class="scene-phone-bar">
+              <span class="scene-phone-dot"></span>
+              <span class="scene-phone-dot"></span>
+              <span class="scene-phone-dot"></span>
+            </div>
+            <div class="scene-embed-area scene-placeholder v4">
+              <svg viewBox="0 0 200 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+                <rect width="200" height="320" fill="#F3E5F5"/>
+                <text x="100" y="130" font-size="52" text-anchor="middle">🩰</text>
+                <text x="100" y="185" fill="#6A1B9A" font-size="14" font-weight="bold" text-anchor="middle" font-family="Arial">バレエ</text>
+                <text x="100" y="208" fill="#7B1FA2" font-size="11" text-anchor="middle" font-family="Arial">美しい姿勢・表現力を磨く</text>
+              </svg>
+              <div class="scene-placeholder-note">実際の動画はTikTokで公開中</div>
+            </div>
+            <div class="scene-phone-caption">
+              <div class="scene-caption-title">バレエレッスン</div>
+              <div class="scene-caption-sub">姿勢・美意識・集中力</div>
+            </div>
+          </div>
+        </div>
+        <div class="scene-card-text">
+          <div class="scene-card-label">🩰 バレエ</div>
+          <p class="scene-card-desc">美しい姿勢と表現力・<br>忍耐力が育まれます</p>
+        </div>
+      </div>
+
+      <!-- Card 5: TikTok CTA -->
+      <div class="scene-card scene-card-cta">
+        <div class="scene-phone">
+          <div class="scene-phone-inner">
+            <div class="scene-phone-bar">
+              <span class="scene-phone-dot"></span>
+              <span class="scene-phone-dot"></span>
+              <span class="scene-phone-dot"></span>
+            </div>
+            <div class="scene-embed-area scene-cta-area">
+              <div class="scene-cta-inner">
+                <svg viewBox="0 0 24 24" fill="white" width="44" height="44" style="margin-bottom:14px;">
+                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.2 8.2 0 0 0 4.79 1.53V6.76a4.85 4.85 0 0 1-1.02-.07z"/>
+                </svg>
+                <div style="font-size:15px;font-weight:900;color:#fff;margin-bottom:8px;">もっと見る</div>
+                <div style="font-size:12px;color:rgba(255,255,255,.8);margin-bottom:18px;line-height:1.6;">TikTokで授業風景・<br>子どもたちの笑顔を<br>毎日発信中！</div>
+                <a href="https://www.tiktok.com/@isk.kids.academy?lang=ja-JP" target="_blank" rel="noopener"
+                   style="display:inline-flex;align-items:center;gap:7px;background:#fff;color:#000;border-radius:999px;padding:10px 20px;font-size:13px;font-weight:900;text-decoration:none;transition:opacity .18s;">
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.2 8.2 0 0 0 4.79 1.53V6.76a4.85 4.85 0 0 1-1.02-.07z"/>
+                  </svg>
+                  TikTokを見る
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="scene-card-text">
+          <div class="scene-card-label" style="background:rgba(255,255,255,.15);color:#fff;">📲 フォロー歓迎</div>
+          <p class="scene-card-desc" style="color:rgba(255,255,255,.8);">日々の様子をTikTokで<br>配信しています</p>
+        </div>
+      </div>
+
+    </div><!-- /scene-track -->
+  </div><!-- /scene-scroll-wrap -->
+
+  <!-- Bottom CTA -->
+  <div class="wrap" style="margin-top:32px;">
+    <div style="text-align:center;">
+      <a href="https://www.tiktok.com/@isk.kids.academy?lang=ja-JP" target="_blank" rel="noopener"
+         class="btn btn-primary" style="display:inline-flex;margin-bottom:14px;">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17">
+          <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.2 8.2 0 0 0 4.79 1.53V6.76a4.85 4.85 0 0 1-1.02-.07z"/>
+        </svg>
+        TikTokで授業の様子をもっと見る
+      </a>
+      <p style="font-size:12px;color:rgba(255,255,255,.55);">@isk.kids.academy · フォローして最新情報をチェック</p>
     </div>
   </div>
 </section>
@@ -1684,5 +2048,8 @@ document.querySelectorAll('.header-nav a').forEach(a => {
   });
 });
 </script>
+
+<!-- TikTok embed SDK -->
+<script async src="https://www.tiktok.com/embed.js"></script>
 </body>
 </html>
