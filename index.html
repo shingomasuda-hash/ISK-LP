@@ -704,14 +704,13 @@ select.form-ctrl {
   /* TikTok iframeのヘッダー・フッターUIをクリップするためのトリック */
   clip-path: inset(0);
 }
-/* iframeを少し拡大してTikTokのUI（上下の余白・ヘッダー）を隠す */
+/* iframeをフレームにぴったり収める */
 .scene-embed-area iframe {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 110%;
-  height: 110%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   border: none;
   display: block;
   pointer-events: auto;
