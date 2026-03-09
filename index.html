@@ -668,14 +668,14 @@ select.form-ctrl {
 /* Phone frame wrapper */
 .scene-phone {
   width: 200px;
-  border-radius: 24px;
+  border-radius: 28px;
   background: #111;
-  padding: 8px;
-  box-shadow: 0 8px 32px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.08);
+  padding: 7px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.1);
   position: relative;
 }
 .scene-phone-inner {
-  border-radius: 18px;
+  border-radius: 22px;
   overflow: hidden;
   background: #1a1a1a;
   display: flex;
@@ -701,9 +701,21 @@ select.form-ctrl {
   overflow: hidden;
   position: relative;
   background: #000;
+  /* TikTok iframeのヘッダー・フッターUIをクリップするためのトリック */
+  clip-path: inset(0);
 }
-.scene-embed-area iframe,
-.scene-embed-area > * { width: 100%; height: 100%; }
+/* iframeを少し拡大してTikTokのUI（上下の余白・ヘッダー）を隠す */
+.scene-embed-area iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110%;
+  height: 110%;
+  border: none;
+  display: block;
+  pointer-events: auto;
+}
 
 /* TikTok embed override */
 .scene-embed-area .tiktok-embed {
@@ -1430,7 +1442,7 @@ select.form-ctrl {
   <div class="scene-scroll-wrap">
     <div class="scene-track">
 
-      <!-- Card 1 -->
+      <!-- Card 1: 授業風景 -->
       <div class="scene-card">
         <div class="scene-phone">
           <div class="scene-phone-inner">
@@ -1440,29 +1452,23 @@ select.form-ctrl {
               <span class="scene-phone-dot"></span>
             </div>
             <div class="scene-embed-area">
-              <blockquote class="tiktok-embed"
-                cite="https://www.tiktok.com/@isk.kids.academy"
-                data-unique-id="isk.kids.academy"
-                data-embed-type="creator"
-                style="max-width:100%;min-width:auto;">
-                <section>
-                  <a target="_blank" href="https://www.tiktok.com/@isk.kids.academy?lang=ja-JP">@isk.kids.academy</a>
-                </section>
-              </blockquote>
-            </div>
-            <div class="scene-phone-caption">
-              <div class="scene-caption-title">ISK Kids Academy</div>
-              <div class="scene-caption-sub">オールイングリッシュの日常</div>
+              <iframe
+                src="https://www.tiktok.com/embed/v2/7608104552050609428?lang=ja-JP"
+                allowfullscreen
+                allow="encrypted-media"
+                scrolling="no"
+                style="width:100%;height:100%;border:none;display:block;"
+              ></iframe>
             </div>
           </div>
         </div>
         <div class="scene-card-text">
-          <div class="scene-card-label">🌍 英語レッスン</div>
-          <p class="scene-card-desc">歌・ゲーム・絵本を通じて<br>楽しみながら英語に親しむ</p>
+          <div class="scene-card-label">🏫 授業風景</div>
+          <p class="scene-card-desc">実際のクラスの様子を<br>のぞいてみてください</p>
         </div>
       </div>
 
-      <!-- Card 2 -->
+      <!-- Card 2: 子供の成長 -->
       <div class="scene-card">
         <div class="scene-phone">
           <div class="scene-phone-inner">
@@ -1471,88 +1477,24 @@ select.form-ctrl {
               <span class="scene-phone-dot"></span>
               <span class="scene-phone-dot"></span>
             </div>
-            <div class="scene-embed-area scene-placeholder v2">
-              <svg viewBox="0 0 200 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
-                <rect width="200" height="320" fill="#FCE4EC"/>
-                <text x="100" y="130" font-size="52" text-anchor="middle">🎵</text>
-                <text x="100" y="185" fill="#C2185B" font-size="14" font-weight="bold" text-anchor="middle" font-family="Arial">ミュージック</text>
-                <text x="100" y="208" fill="#E91E63" font-size="11" text-anchor="middle" font-family="Arial">リズムで感性を育てる</text>
-              </svg>
-              <div class="scene-placeholder-note">実際の動画はTikTokで公開中</div>
-            </div>
-            <div class="scene-phone-caption">
-              <div class="scene-caption-title">ミュージックタイム</div>
-              <div class="scene-caption-sub">感性・リズム・表現力を育む</div>
+            <div class="scene-embed-area">
+              <iframe
+                src="https://www.tiktok.com/embed/v2/7602810400047926548?lang=ja-JP"
+                allowfullscreen
+                allow="encrypted-media"
+                scrolling="no"
+                style="width:100%;height:100%;border:none;display:block;"
+              ></iframe>
             </div>
           </div>
         </div>
         <div class="scene-card-text">
-          <div class="scene-card-label">🎵 ミュージック</div>
-          <p class="scene-card-desc">音楽を通じてリズム感・<br>表現力・協調性を磨く</p>
+          <div class="scene-card-label">🌱 子供の成長</div>
+          <p class="scene-card-desc">子どもたちの笑顔と<br>成長の瞬間をお届け</p>
         </div>
       </div>
 
-      <!-- Card 3 -->
-      <div class="scene-card">
-        <div class="scene-phone">
-          <div class="scene-phone-inner">
-            <div class="scene-phone-bar">
-              <span class="scene-phone-dot"></span>
-              <span class="scene-phone-dot"></span>
-              <span class="scene-phone-dot"></span>
-            </div>
-            <div class="scene-embed-area scene-placeholder v3">
-              <svg viewBox="0 0 200 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
-                <rect width="200" height="320" fill="#E8F5E9"/>
-                <text x="100" y="130" font-size="52" text-anchor="middle">🤸</text>
-                <text x="100" y="185" fill="#2E7D32" font-size="14" font-weight="bold" text-anchor="middle" font-family="Arial">エクササイズ</text>
-                <text x="100" y="208" fill="#388E3C" font-size="11" text-anchor="middle" font-family="Arial">体を動かして自信をつける</text>
-              </svg>
-              <div class="scene-placeholder-note">実際の動画はTikTokで公開中</div>
-            </div>
-            <div class="scene-phone-caption">
-              <div class="scene-caption-title">エクササイズ</div>
-              <div class="scene-caption-sub">体力・運動能力・自己肯定感</div>
-            </div>
-          </div>
-        </div>
-        <div class="scene-card-text">
-          <div class="scene-card-label">🤸 エクササイズ</div>
-          <p class="scene-card-desc">「できた！」体験が<br>自己肯定感を育てます</p>
-        </div>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="scene-card">
-        <div class="scene-phone">
-          <div class="scene-phone-inner">
-            <div class="scene-phone-bar">
-              <span class="scene-phone-dot"></span>
-              <span class="scene-phone-dot"></span>
-              <span class="scene-phone-dot"></span>
-            </div>
-            <div class="scene-embed-area scene-placeholder v4">
-              <svg viewBox="0 0 200 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
-                <rect width="200" height="320" fill="#F3E5F5"/>
-                <text x="100" y="130" font-size="52" text-anchor="middle">🩰</text>
-                <text x="100" y="185" fill="#6A1B9A" font-size="14" font-weight="bold" text-anchor="middle" font-family="Arial">バレエ</text>
-                <text x="100" y="208" fill="#7B1FA2" font-size="11" text-anchor="middle" font-family="Arial">美しい姿勢・表現力を磨く</text>
-              </svg>
-              <div class="scene-placeholder-note">実際の動画はTikTokで公開中</div>
-            </div>
-            <div class="scene-phone-caption">
-              <div class="scene-caption-title">バレエレッスン</div>
-              <div class="scene-caption-sub">姿勢・美意識・集中力</div>
-            </div>
-          </div>
-        </div>
-        <div class="scene-card-text">
-          <div class="scene-card-label">🩰 バレエ</div>
-          <p class="scene-card-desc">美しい姿勢と表現力・<br>忍耐力が育まれます</p>
-        </div>
-      </div>
-
-      <!-- Card 5: TikTok CTA -->
+      <!-- Card 3: もっと見るCTA -->
       <div class="scene-card scene-card-cta">
         <div class="scene-phone">
           <div class="scene-phone-inner">
@@ -1563,17 +1505,17 @@ select.form-ctrl {
             </div>
             <div class="scene-embed-area scene-cta-area">
               <div class="scene-cta-inner">
-                <svg viewBox="0 0 24 24" fill="white" width="44" height="44" style="margin-bottom:14px;">
+                <svg viewBox="0 0 24 24" fill="white" width="48" height="48" style="margin-bottom:16px;">
                   <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.2 8.2 0 0 0 4.79 1.53V6.76a4.85 4.85 0 0 1-1.02-.07z"/>
                 </svg>
-                <div style="font-size:15px;font-weight:900;color:#fff;margin-bottom:8px;">もっと見る</div>
-                <div style="font-size:12px;color:rgba(255,255,255,.8);margin-bottom:18px;line-height:1.6;">TikTokで授業風景・<br>子どもたちの笑顔を<br>毎日発信中！</div>
+                <div style="font-size:16px;font-weight:900;color:#fff;margin-bottom:10px;line-height:1.4;">もっと見る</div>
+                <div style="font-size:12px;color:rgba(255,255,255,.78);margin-bottom:22px;line-height:1.7;">授業の様子・子どもたちの<br>日常を毎日TikTokで<br>発信しています！</div>
                 <a href="https://www.tiktok.com/@isk.kids.academy?lang=ja-JP" target="_blank" rel="noopener"
-                   style="display:inline-flex;align-items:center;gap:7px;background:#fff;color:#000;border-radius:999px;padding:10px 20px;font-size:13px;font-weight:900;text-decoration:none;transition:opacity .18s;">
+                   style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:#000;border-radius:999px;padding:11px 22px;font-size:13px;font-weight:900;text-decoration:none;">
                   <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
                     <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.2 8.2 0 0 0 4.79 1.53V6.76a4.85 4.85 0 0 1-1.02-.07z"/>
                   </svg>
-                  TikTokを見る
+                  TikTokを開く
                 </a>
               </div>
             </div>
@@ -1581,7 +1523,7 @@ select.form-ctrl {
         </div>
         <div class="scene-card-text">
           <div class="scene-card-label" style="background:rgba(255,255,255,.15);color:#fff;">📲 フォロー歓迎</div>
-          <p class="scene-card-desc" style="color:rgba(255,255,255,.8);">日々の様子をTikTokで<br>配信しています</p>
+          <p class="scene-card-desc" style="color:rgba(255,255,255,.78);">@isk.kids.academy<br>最新動画をチェック</p>
         </div>
       </div>
 
@@ -2049,7 +1991,6 @@ document.querySelectorAll('.header-nav a').forEach(a => {
 });
 </script>
 
-<!-- TikTok embed SDK -->
-<script async src="https://www.tiktok.com/embed.js"></script>
+<!-- TikTok embed SDK は今回iframeのみ使用のため不要 -->
 </body>
 </html>
